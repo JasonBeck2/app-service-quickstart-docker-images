@@ -223,7 +223,7 @@ RUN set -ex\
 #    && ln -s ${PHPMYADMIN_HOME} /var/www/phpmyadmin
 	
 # ssh
-COPY sshd_config /etc/ssh/ 
+#COPY sshd_config /etc/ssh/ 
 # php
 COPY php.ini /usr/local/etc/php/php.ini
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
