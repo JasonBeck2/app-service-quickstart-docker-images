@@ -225,6 +225,7 @@ RUN set -ex\
 # ssh
 #COPY sshd_config /etc/ssh/ 
 # php
+RUN ls -lah
 RUN cd .. | ls -lah
 RUN find ../ -name php.ini
 RUN ls -lah /usr/local/etc/
