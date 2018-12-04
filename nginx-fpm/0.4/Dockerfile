@@ -218,7 +218,7 @@ RUN set -ex\
 	&& rm -rf /var/log/nginx \
 	&& ln -s $NGINX_LOG_DIR /var/log/nginx \
 	##
-    && ln -s ${HOME_SITE} /var/www/html \
+    && ln -s ${HOME_SITE} /var/www/html 
     ##	
 #    && ln -s ${PHPMYADMIN_HOME} /var/www/phpmyadmin
 	
