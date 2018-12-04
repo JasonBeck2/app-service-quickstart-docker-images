@@ -223,15 +223,15 @@ RUN set -ex\
 #    && ln -s ${PHPMYADMIN_HOME} /var/www/phpmyadmin
 	
 # ssh
-#COPY sshd_config /etc/ssh/ 
+COPY sshd_config /etc/ssh/ 
 # php
-#COPY php.ini /usr/local/etc/php/php.ini
-#COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-#COPY www.conf /usr/local/etc/php/conf.d/www.conf
+COPY php.ini /usr/local/etc/php/php.ini
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY www.conf /usr/local/etc/php/conf.d/www.conf
 # nginx
-#COPY nginx.conf /etc/nginx/nginx.conf
-#COPY default.conf /etc/nginx/conf.d/default.conf
-#COPY hostingstart.html /home/site/wwwroot/index.html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
+COPY hostingstart.html /home/site/wwwroot/index.html
 # phpmyadmin
 #COPY phpmyadmin-config.inc.php $PHPMYADMIN_SOURCE/
 #COPY mariadb.cnf /etc/mysql/
