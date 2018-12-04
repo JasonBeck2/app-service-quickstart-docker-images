@@ -10,7 +10,6 @@ variables:
   imageName: 'your-container-image-name:$(build.buildId)'
   nginxSourceFolder: 'nginx-fpm/0.4/'
   nginxImageName: 'nginx-fpm:$(build.buildId)'
-  #nginxDockerfilePath: 'nginx-fpm/0.4/Dockerfile'
   wordpressDockerfilePath: 'wordpress-alpine-php/0.61/Dockerfile' 
 
 steps:
