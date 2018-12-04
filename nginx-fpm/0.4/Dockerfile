@@ -225,6 +225,12 @@ RUN set -ex\
 # ssh
 #COPY sshd_config /etc/ssh/ 
 # php
+RUN cd .. | ls -lah
+RUN find ../ -name php.ini
+RUN ls -lah /etc/php/7.2/
+RUN find /usr/local/etc/ -name php.ini
+RUN find /etc/ -name php.ini
+
 COPY php.ini /usr/local/etc/php/php.ini
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 COPY www.conf /usr/local/etc/php/conf.d/www.conf
