@@ -227,7 +227,7 @@ RUN set -ex\
 # php
 RUN cd .. | ls -lah
 RUN find ../ -name php.ini
-RUN ls -lah /etc/php/7.2/
+RUN ls -lah /usr/local/etc/
 RUN find /usr/local/etc/ -name php.ini
 RUN find /etc/ -name php.ini
 
