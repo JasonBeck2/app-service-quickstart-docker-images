@@ -5,6 +5,7 @@ variables:
   nginxBuildDirectory: 'nginx-fpm/0.4/'
   nginxImageName: 'nginx-fpm:$(build.buildId)'
   wpBuildDirectory: 'wordpress-alpine-php/0.61/'
+  wordpressImageName: 'wordpress-alpine-php:$(build.buildId)'
 
 steps:
 - task: Docker@1
@@ -20,6 +21,13 @@ steps:
     imageName: 'jabecreg.azurecr.io/nginx-fpm:86'
     dockerFile: '$(wpBuildDirectory)/Dockerfile'
     useDefaultContext: true
+
+- task: Docker@1
+  displayName: 'Push wordpress image to Azure Container Registry'
+  inputs:
+    command: 'Push an Image'
+    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
+    includeLatestTag: true
 
 #- task: Docker@1
 #  displayName: 'Build nginx image'
