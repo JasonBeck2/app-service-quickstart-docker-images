@@ -1,8 +1,3 @@
-# Docker image
-# Build a Docker image to deploy, run, or push to a container registry.
-# Add steps that use Docker Compose, tag images, push to a registry, run an image, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 pool:
   vmImage: 'Ubuntu 16.04'
 
@@ -11,19 +6,15 @@ variables:
   nginxImageName: 'nginx-fpm:$(build.buildId)'
 
 steps:
-#- script: docker build -f Dockerfile -t $(nginxImageName) .
-#  displayName: 'nginx docker build'
 - task: Docker@1
   displayName: 'Build nginx image'
   inputs:
-    #azureSubscriptionEndpoint: 'Azure CXP FTA Internal Subscription JABEC (e6c0a81f-8120-4f31-9d5e-7f3c5ee4a142)'
-    #azureContainerRegistry: jabecreg.azurecr.io
     imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
     dockerFile: '$(buildDirectory)/Dockerfile'
     useDefaultContext: true
   
 - task: Docker@1
-  displayName: Login
+  displayName: 'Login to Azure Container Registry'
   inputs:
     command: login
     azureSubscriptionEndpoint: 'Azure CXP FTA Internal Subscription JABEC (e6c0a81f-8120-4f31-9d5e-7f3c5ee4a142)'
@@ -35,5 +26,3 @@ steps:
     command: 'Push an Image'
     imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
     includeLatestTag: true
-
-
