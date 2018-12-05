@@ -26,7 +26,7 @@ steps:
   displayName: 'Push wordpress image to Azure Container Registry'
   inputs:
     command: 'Push an Image'
-    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
+    imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
     includeLatestTag: true
 
 #- task: Docker@1
