@@ -74,14 +74,16 @@ setup_wordpress(){
     chown -R www-data:www-data $WORDPRESS_HOME    
 }
 
-update_wordpress_config(){    
-	DATABASE_HOST=${DATABASE_HOST:-localhost}
-	DATABASE_NAME=${DATABASE_NAME:-azurelocaldb}
+update_wordpress_config(){    	
+	DATABASE_HOST=${DATABASE_HOST:-jabecdb.mysql.database.azure.com}
+	DATABASE_NAME=${DATABASE_NAME:-wordpress}
+    DATABASE_USERNAME=${DATABASE_USERNAME:-jabec@jabecdb}
+    DATABASE_PASSWORD=${DATABASE_PASSWORD:-P@ssw0rd12345}
 	# if DATABASE_USERNAME equal phpmyadmin, it means it's nothing at beginning.
-	if [ "${DATABASE_USERNAME}" == "phpmyadmin" ]; then
-	    DATABASE_USERNAME='wordpress'
-	fi	
-	DATABASE_PASSWORD=${DATABASE_PASSWORD:-MS173m_QN}   
+	#if [ "${DATABASE_USERNAME}" == "phpmyadmin" ]; then
+	#    DATABASE_USERNAME='wordpress'
+	#fi	
+	#DATABASE_PASSWORD=${DATABASE_PASSWORD:-MS173m_QN}   
 }
 
 # setup server root
@@ -118,15 +120,15 @@ if [ "${DATABASE_TYPE}" == "local" ]; then
     #echo "Starting local MariaDB ..."
     #start_mariadb
 
-    echo "Granting user for phpMyAdmin ..."
-    # Set default value of username/password if they are't exist/null.
-    DATABASE_USERNAME=${DATABASE_USERNAME:-phpmyadmin}
-    DATABASE_PASSWORD=${DATABASE_PASSWORD:-MS173m_QN}
-	echo "INFO: ++++++++++++++++++++++++++++++++++++++++++++++++++:"
-    echo "phpmyadmin username:" $DATABASE_USERNAME
-    echo "phpmyadmin password:" $DATABASE_PASSWORD
-    echo "INFO: ++++++++++++++++++++++++++++++++++++++++++++++++++:"
-    mysql -u root -e "GRANT ALL ON *.* TO \`$DATABASE_USERNAME\`@'localhost' IDENTIFIED BY '$DATABASE_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    #echo "Granting user for phpMyAdmin ..."
+    ## Set default value of username/password if they are't exist/null.
+    #DATABASE_USERNAME=${DATABASE_USERNAME:-phpmyadmin}
+    #DATABASE_PASSWORD=${DATABASE_PASSWORD:-MS173m_QN}
+	#echo "INFO: ++++++++++++++++++++++++++++++++++++++++++++++++++:"
+    #echo "phpmyadmin username:" $DATABASE_USERNAME
+    #echo "phpmyadmin password:" $DATABASE_PASSWORD
+    #echo "INFO: ++++++++++++++++++++++++++++++++++++++++++++++++++:"
+    #mysql -u root -e "GRANT ALL ON *.* TO \`$DATABASE_USERNAME\`@'localhost' IDENTIFIED BY '$DATABASE_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     #echo "Installing phpMyAdmin ..."
     #setup_phpmyadmin
     #echo "Loading phpMyAdmin conf ..."
