@@ -105,7 +105,7 @@ if [ ! $WEBSITES_ENABLE_APP_SERVICE_STORAGE ]; then
 fi 
 chmod 777 /run/php/php7.0-fpm.sock
 
-DATABASE_TYPE=$(echo ${DATABASE_TYPE}|tr '[A-Z]' '[a-z]')
+#DATABASE_TYPE=$(echo ${DATABASE_TYPE}|tr '[A-Z]' '[a-z]')
 
 if [ "${DATABASE_TYPE}" == "local" ]; then  
     echo 'mysql.default_socket = /run/mysqld/mysqld.sock' >> $PHP_CONF_FILE     
