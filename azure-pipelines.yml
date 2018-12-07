@@ -5,7 +5,7 @@ variables:
   nginxBuildDirectory: 'nginx-fpm/0.4/'
   nginxImageName: 'nginx-fpm:$(build.buildId)'
   wpBuildDirectory: 'wordpress-alpine-php/0.61/'
-  wordpressImageName: 'wordpress-alpine-php:$(build.buildId)'
+  wordpressImageName: 'wordpress-alpine-php'
 
 steps:
 #- task: Docker@1
@@ -39,7 +39,7 @@ steps:
 - task: Docker@1
   displayName: 'Build wordpress image'
   inputs:
-    imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
+    imageName: 'jabecreg.azurecr.io/$(wordpressImageName):$(build.buildId)'
     dockerFile: '$(wpBuildDirectory)/Dockerfile'
     useDefaultContext: true
     includeLatestTag: true
