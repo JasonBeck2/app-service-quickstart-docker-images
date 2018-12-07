@@ -48,4 +48,4 @@ steps:
   inputs:
     command: 'Push an Image'
     imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
-    includeLatestTag: true
+    includeLatestTag: false
