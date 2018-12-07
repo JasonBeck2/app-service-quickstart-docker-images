@@ -1,7 +1,7 @@
 #
 # Dockerfile for WordPress
 #
-FROM jabecreg.azurecr.io/nginx-fpm:86
+FROM jabecreg.azurecr.io/nginx-fpm:92
 MAINTAINER Azure App Service Container Images <appsvc-images@microsoft.com>
 # ========
 # ENV vars

@@ -3,38 +3,31 @@ pool:
 
 variables:
   nginxBuildDirectory: 'nginx-fpm/0.4/'
-  nginxImageName: 'nginx-fpm:$(build.buildId)'
+  nginxImageName: 'nginx-fpm'
   wpBuildDirectory: 'wordpress-alpine-php/0.61/'
   wordpressImageName: 'wordpress-alpine-php'
 
 steps:
-#- task: Docker@1
-#  displayName: 'Build nginx image'
-#  inputs:
-#    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
-#    dockerFile: '$(nginxBuildDirectory)/Dockerfile'
-#    useDefaultContext: true
-#  
-#- task: Docker@1
-#  displayName: 'Login to Azure Container Registry'
-#  inputs:
-#    command: login
-#    azureSubscriptionEndpoint: 'Azure CXP FTA Internal Subscription JABEC (e6c0a81f-8120-4f31-9d5e-7f3c5ee4a142)'
-#    azureContainerRegistry: jabecreg.azurecr.io
-#
-#- task: Docker@1
-#  displayName: 'Push nginx image to Azure Container Registry'
-#  inputs:
-#    command: 'Push an Image'
-#    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
-#    includeLatestTag: true
-
 - task: Docker@1
   displayName: 'Login to Azure Container Registry'
   inputs:
     command: login
     azureSubscriptionEndpoint: 'Azure CXP FTA Internal Subscription JABEC (e6c0a81f-8120-4f31-9d5e-7f3c5ee4a142)'
     azureContainerRegistry: jabecreg.azurecr.io
+    
+#- task: Docker@1
+#  displayName: 'Build nginx image'
+#  inputs:
+#    imageName: 'jabecreg.azurecr.io/$(nginxImageName):$(build.buildId)'
+#    dockerFile: '$(nginxBuildDirectory)/Dockerfile'
+#    useDefaultContext: true
+#    includeLatestTag: true
+#
+#- task: Docker@1
+#  displayName: 'Push nginx image to Azure Container Registry'
+#  inputs:
+#    command: 'Push an Image'
+#    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
 
 - task: Docker@1
   displayName: 'Build wordpress image'
@@ -49,4 +42,3 @@ steps:
   inputs:
     command: 'Push an Image'
     imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
-    #includeLatestTag: true
