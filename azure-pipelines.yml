@@ -9,25 +9,32 @@ variables:
 
 steps:
 - task: Docker@1
+  displayName: 'Build nginx image'
+  inputs:
+    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
+    dockerFile: '$(nginxBuildDirectory)/Dockerfile'
+    useDefaultContext: true
+  
+- task: Docker@1
   displayName: 'Login to Azure Container Registry'
   inputs:
     command: login
     azureSubscriptionEndpoint: 'Azure CXP FTA Internal Subscription JABEC (e6c0a81f-8120-4f31-9d5e-7f3c5ee4a142)'
     azureContainerRegistry: jabecreg.azurecr.io
 
+- task: Docker@1
+  displayName: 'Push nginx image to Azure Container Registry'
+  inputs:
+    command: 'Push an Image'
+    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
+    includeLatestTag: true
+
 #- task: Docker@1
-#  displayName: 'Build nginx image'
+#  displayName: 'Login to Azure Container Registry'
 #  inputs:
-#    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
-#    dockerFile: '$(nginxBuildDirectory)/Dockerfile'
-#    useDefaultContext: true
-#
-#- task: Docker@1
-#  displayName: 'Push nginx image to Azure Container Registry'
-#  inputs:
-#    command: 'Push an Image'
-#    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
-#    includeLatestTag: true
+#    command: login
+#    azureSubscriptionEndpoint: 'Azure CXP FTA Internal Subscription JABEC (e6c0a81f-8120-4f31-9d5e-7f3c5ee4a142)'
+#    azureContainerRegistry: jabecreg.azurecr.io
 
 - task: Docker@1
   displayName: 'Build wordpress image'
