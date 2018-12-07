@@ -42,10 +42,11 @@ steps:
     imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
     dockerFile: '$(wpBuildDirectory)/Dockerfile'
     useDefaultContext: true
+    includeLatestTag: true
 
 - task: Docker@1
   displayName: 'Push wordpress image to Azure Container Registry'
   inputs:
     command: 'Push an Image'
     imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
-    includeLatestTag: false
+    #includeLatestTag: true
