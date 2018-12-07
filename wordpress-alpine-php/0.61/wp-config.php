@@ -23,14 +23,10 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 
-#$connectstr_dbhost = getenv('DATABASE_HOST');
-#$connectstr_dbname = getenv('DATABASE_NAME');
-#$connectstr_dbusername = getenv('DATABASE_USERNAME');
-#$connectstr_dbpassword = getenv('DATABASE_PASSWORD');
-$connectstr_dbhost = getenv('jabecdb.mysql.database.azure.com');
-$connectstr_dbname = getenv('wordpress');
-$connectstr_dbusername = getenv('jabec@jabecdb');
-$connectstr_dbpassword = getenv('P@ssw0rd12345');
+$connectstr_dbhost = getenv('DATABASE_HOST');
+$connectstr_dbname = getenv('DATABASE_NAME');
+$connectstr_dbusername = getenv('DATABASE_USERNAME');
+$connectstr_dbpassword = getenv('DATABASE_PASSWORD');
 
 
 define('DB_NAME', $connectstr_dbname);
