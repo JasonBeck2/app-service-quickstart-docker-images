@@ -15,6 +15,7 @@ steps:
     targetPath: '$(Build.SourcesDirectory)'
 
 - bash: 'ls -lah'
+- bash: 'cat file*.txt'
 
 # - task: Docker@1
 #   displayName: 'Login to Azure Container Registry'
