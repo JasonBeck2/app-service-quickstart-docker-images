@@ -126,7 +126,7 @@ if [ "${DATABASE_TYPE}" == "local" ]; then
     echo "phpmyadmin username:" $DATABASE_USERNAME
     echo "phpmyadmin password:" $DATABASE_PASSWORD
     echo "INFO: ++++++++++++++++++++++++++++++++++++++++++++++++++:"
-    mysql -u root -e "GRANT ALL ON *.* TO \`$DATABASE_USERNAME\`@'localhost' IDENTIFIED BY '$DATABASE_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    #mysql -u root -e "GRANT ALL ON *.* TO \`$DATABASE_USERNAME\`@'localhost' IDENTIFIED BY '$DATABASE_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     #echo "Installing phpMyAdmin ..."
     #setup_phpmyadmin
     #echo "Loading phpMyAdmin conf ..."
@@ -150,9 +150,9 @@ if [ ! -e "$WORDPRESS_HOME/wp-config.php" ]; then
         echo "INFO: WORDPRESS_DATABASE_PASSWORD:" $DATABASE_PASSWORD	        
         echo "INFO: ++++++++++++++++++++++++++++++++++++++++++++++++++:"
         echo "Creating database for WordPress if not exists ..."
-	    mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`$DATABASE_NAME\` CHARACTER SET utf8 COLLATE utf8_general_ci;"
+	    #mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`$DATABASE_NAME\` CHARACTER SET utf8 COLLATE utf8_general_ci;"
 	    echo "Granting user for WordPress ..."
-	    mysql -u root -e "GRANT ALL ON \`$DATABASE_NAME\`.* TO \`$DATABASE_USERNAME\`@\`$DATABASE_HOST\` IDENTIFIED BY '$DATABASE_PASSWORD'; FLUSH PRIVILEGES;"	
+	    #mysql -u root -e "GRANT ALL ON \`$DATABASE_NAME\`.* TO \`$DATABASE_USERNAME\`@\`$DATABASE_HOST\` IDENTIFIED BY '$DATABASE_PASSWORD'; FLUSH PRIVILEGES;"	
          
 		cd $WORDPRESS_SOURCE && chmod 777 wp-config.php
 		if [ ! $WEBSITES_ENABLE_APP_SERVICE_STORAGE ]; then 
