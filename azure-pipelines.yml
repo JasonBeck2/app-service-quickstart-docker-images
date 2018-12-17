@@ -20,8 +20,8 @@ steps:
     project: 'SampleProject'
     pipeline: 'JasonBeck2.website-azure-testing'
     buildVersionToDownload: 'latest'
-    artifactName: 'SiteContentArtifacts2'
-    buildId: 113
+    artifactName: 'SiteContentArtifacts'
+    buildId: 118
     downloadType: 'single'
     downloadPath: '$(Build.SourcesDirectory)'
 
