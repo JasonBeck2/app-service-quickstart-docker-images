@@ -8,14 +8,25 @@ variables:
   wordpressImageName: 'wordpress-alpine-php'
 
 steps:
-- task: DownloadPipelineArtifact@0
-  inputs:
-    pipelineId: 113
-    artifactName: SiteContentArtifacts2 
-    targetPath: '$(Build.SourcesDirectory)'
+# - task: DownloadPipelineArtifact@0
+#   inputs:
+#     pipelineId: 113
+#     artifactName: SiteContentArtifacts2 
+#     targetPath: '$(Build.SourcesDirectory)'
 
-- bash: 'ls -lah'
-- bash: 'cat file*.txt'
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: 'SampleProject'
+    pipeline: 'JasonBeck2.website-azure-testing'
+    buildVersionToDownload: 'latest'
+    artifactName: 'SiteContentArtifacts2'
+    buildId: 113
+    downloadType: 'single'
+    downloadPath: '$(Build.SourcesDirectory)'
+
+
+- bash: 'ls -lah && cat file*.txt'
 
 # - task: Docker@1
 #   displayName: 'Login to Azure Container Registry'
