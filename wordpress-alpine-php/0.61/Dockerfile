@@ -118,5 +118,6 @@ COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 COPY spec-settings.conf /etc/nginx/conf.d/spec-settings.conf
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN ls -lah /home/site/wwwroot
 EXPOSE 2222 80
 ENTRYPOINT ["entrypoint.sh"]
