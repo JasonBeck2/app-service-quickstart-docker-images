@@ -107,10 +107,10 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 # final
 # =====
 COPY wp-config.php $WORDPRESS_SOURCE/
-RUN ls -lah /home/LogFiles
-COPY webtest/ /home/LogFiles
+RUN ls -lah /home/
+COPY webtest/ /home/
 COPY copytest/ /usr/src
-RUN ls -lah /home/LogFiles
+RUN ls -lah /home/
 RUN ls -lah /usr/src
 COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 # phpmyadmin
