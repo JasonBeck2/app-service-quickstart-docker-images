@@ -23,10 +23,10 @@ steps:
     artifactName: 'SiteContentArtifacts'
     buildId: 118
     downloadType: 'single'
-    downloadPath: '$(Build.SourcesDirectory)'
+    downloadPath: '$(wpBuildDirectory)/webtest'
 
 
-- bash: 'ls -lah && cat file*.txt'
+- bash: 'ls -lah'
 
 # - task: Docker@1
 #   displayName: 'Login to Azure Container Registry'
@@ -49,16 +49,16 @@ steps:
 #    command: 'Push an Image'
 #    imageName: 'jabecreg.azurecr.io/$(nginxImageName)'
 
-# - task: Docker@1
-#   displayName: 'Build wordpress image'
-#   inputs:
-#     imageName: 'jabecreg.azurecr.io/$(wordpressImageName):$(build.buildId)'
-#     dockerFile: '$(wpBuildDirectory)/Dockerfile'
-#     useDefaultContext: true
-#     includeLatestTag: true
+- task: Docker@1
+  displayName: 'Build wordpress image'
+  inputs:
+    imageName: 'jabecreg.azurecr.io/$(wordpressImageName):$(build.buildId)'
+    dockerFile: '$(wpBuildDirectory)/Dockerfile'
+    useDefaultContext: true
+    includeLatestTag: true
 
-# - task: Docker@1
-#   displayName: 'Push wordpress image to Azure Container Registry'
-#   inputs:
-#     command: 'Push an Image'
-#     imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
+- task: Docker@1
+  displayName: 'Push wordpress image to Azure Container Registry'
+  inputs:
+    command: 'Push an Image'
+    imageName: 'jabecreg.azurecr.io/$(wordpressImageName)'
