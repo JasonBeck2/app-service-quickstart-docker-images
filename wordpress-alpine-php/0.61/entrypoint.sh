@@ -137,7 +137,7 @@ fi
 if [ ! -e "$WORDPRESS_HOME/wp-config.php" ]; then
 	echo "INFO: $WORDPRESS_HOME/wp-config.php not found."
 	echo "Installing WordPress for the first time ..." 
-	setup_wordpress	
+	#setup_wordpress	
 
 	if [ "${DATABASE_TYPE}" == "local" ]; then
         echo "INFO: local MariaDB is used."
