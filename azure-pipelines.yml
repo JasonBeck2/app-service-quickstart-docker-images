@@ -3,7 +3,6 @@ pool:
 
 variables:
   nginxBuildDirectory: 'nginx-fpm/0.4/'
-  nginxImageName: 'nginx-fpm'
 
 steps:
 
