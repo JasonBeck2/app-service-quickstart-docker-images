@@ -108,10 +108,10 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 # =====
 COPY wp-config.php $WORDPRESS_SOURCE/
 RUN ls -lah /home/
-COPY webtest/ /home/
-COPY copytest/ /usr/src
-COPY copytest/ /home/
-COPY copytest/ /home/site
+#COPY webtest/ /home/
+#COPY copytest/ /usr/src
+#COPY copytest/ /home/
+#COPY copytest/ /home/site
 COPY copytest/ /home/site/wwwroot
 RUN ls -lah /home/
 RUN ls -lah /usr/src

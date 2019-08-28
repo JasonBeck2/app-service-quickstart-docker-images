@@ -111,4 +111,6 @@ fi
 /usr/sbin/nginx -g "daemon off;"
 #/usr/sbin/nginx
 
-
+echo "Creating directories"
+mkdir /srv/www/shared
+mkdir /srv/www/shared/uploads
