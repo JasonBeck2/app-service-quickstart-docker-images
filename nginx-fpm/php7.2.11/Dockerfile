@@ -237,6 +237,10 @@ COPY mariadb.cnf /etc/mysql/
 COPY phpmyadmin-default.conf $PHPMYADMIN_SOURCE/phpmyadmin-default.conf
 RUN \
    echo "<?php phpinfo();" > /var/www/html/index.php 
+# make directory for media and create symlink
+RUN mkdir -p /srv/www/shared/uploads \
+	&& mkdir -p /home/site/wwwroot/web/app \
+	&& ln -s /srv/www/shared/uploads /home/site/wwwroot/web/app
 # =====
 # final
 # =====
