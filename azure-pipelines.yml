@@ -2,8 +2,9 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  nginxBuildDirectory: 'nginx-fpm/0.4/'
-  nginxImageName: 'nginx-fpm'
+  # nginxBuildDirectory: 'nginx-fpm/0.4/'
+  nginxBuildDirectory: 'nginx-fpm/php7.2.11'
+  nginxImageName: 'custmom-nginx-fpm'
 
 steps:
 
@@ -17,7 +18,7 @@ steps:
 - task: Docker@2
   displayName: 'Build nginx image'
   inputs:
-   repository: 'jabecreg.azurecr.io/custom-nginx-fpm'
+   repository: 'jabecreg.azurecr.io/$(nginxImageName)'
    command: buildAndPush
    dockerFile: '$(nginxBuildDirectory)/Dockerfile'
    buildContext: '$(nginxBuildDirectory)'
