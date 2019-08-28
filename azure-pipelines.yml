@@ -2,7 +2,7 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  nginxBuildDirectory: 'nginx-fpm/0.4/'
+  nginxBuildDirectory: 'nginx-fpm/php7.2.11'
 
 steps:
 
