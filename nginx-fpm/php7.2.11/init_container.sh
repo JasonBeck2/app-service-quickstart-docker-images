@@ -108,7 +108,3 @@ if test ! -e /home/LogFiles/nginx/error.log; then
     touch /home/LogFiles/nginx/error.log
 fi
 /usr/sbin/nginx -g "daemon off;"
-
-echo "Creating directories"
-mkdir /srv/www/shared
-mkdir /srv/www/shared/uploads
