@@ -112,5 +112,6 @@ fi
 #/usr/sbin/nginx
 
 echo "Creating directories"
+mkdir /srv/www
 mkdir /srv/www/shared
 mkdir /srv/www/shared/uploads
