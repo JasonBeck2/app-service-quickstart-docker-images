@@ -243,5 +243,10 @@ RUN \
 # =====
 COPY init_container.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init_container.sh
+
+# make directory for media and create symlink
+RUN mkdir -p /srv/www/shared/uploads \
+	&& mkdir -p /home/site/wwwroot/web/app \
+	ln -s /srv/www/shared/uploads /home/site/wwwroot/web/app
 EXPOSE 2222 80
 ENTRYPOINT ["init_container.sh"]
